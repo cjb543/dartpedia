@@ -7,6 +7,9 @@ const version = '0.1.1';
 
 void main(List<String> arguments) {
   var commandRunner = CommandRunner(
+    onOutput: (String output) async {
+      await write(output);
+    },
     onError: (Object error) {
       if (error is Error) {
         throw error;
